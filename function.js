@@ -22,16 +22,19 @@ newComment = (imageLink, commentText) => {
     var imageLink = "images/profile.png";
   }
   var newCommentDiv = document.createElement("div");
+  var commentData = document.createElement("div");
   var commentImage = document.createElement("img");
-  var commentData = document.createElement("p");
+  var commentPara = document.createElement("p");
   var commentChilds = document.createElement("div");
   newCommentDiv.className = "newComment";
-  commentImage.className = "commentImage";
   commentData.className = "commentData";
+  commentImage.className = "commentImage";
+  commentPara.className = "commentPara";
   commentChilds.className = "commentChilds";
   commentImage.setAttribute("src", imageLink);
-  commentData.innerHTML = commentText;
-  newCommentDiv.append(commentImage);
+  commentPara.innerHTML = commentText;
+  commentData.append(commentImage);
+  commentData.append(commentPara);
   newCommentDiv.append(commentData);
   newCommentDiv.append(commentChilds);
   return newCommentDiv;
@@ -64,15 +67,21 @@ bthCommentPressed = (link) => {
         var newLink = `https://www.wuxiaworld.com/api/comments/${COMMENTS_SETTINGS.id}/top`;
         fetch(newLink).then((response) => {
           response.json().then((commentData) => {
-            commentData.items.forEach((element) => {
-              $(".commentarea").append(
-                newComment(element.avatar, element.content)
-              );
-            });
+            checkChildren(commentData.items, $(".commentarea"));
           });
         });
       }, 1);
     });
+  });
+};
+
+checkChildren = (data, storage) => {
+  data.forEach((element) => {
+    var newCommt = newComment(element.avatar, element.content);
+    if (element.children.length > 0) {
+      checkChildren(element.children, newCommt.querySelector(".commentChilds"));
+    }
+    storage.append(newCommt);
   });
 };
 
@@ -108,7 +117,6 @@ setChapterBtnLink = (id, novelLink) => {
       $(`${id} > a`).attr("href", "#chapcontent");
       var newBtnLink = novelLink + btnlink;
       $(`${id} > a`).click(() => btnChapterPressed(newBtnLink));
-      console.log(newBtnLink);
       clearInterval(isLoadedChapter);
     }
   }, 100);
