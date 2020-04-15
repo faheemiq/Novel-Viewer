@@ -1,4 +1,13 @@
 $(document).ready(function () {
+  if (localStorage["chapterLink"].length != 0) {
+    btnChapterPressed(localStorage["chapterLink"]);
+  }
+  if (localStorage["commentLink"].length != 0) {
+    bthCommentPressed(localStorage["commentLink"]);
+  }
+  $(".linkchapter").val(localStorage["chapterLink"]);
+  $(".linkcomment").val(localStorage["commentLink"]);
+
   $(".linkchapterbtn").click(() => {
     var link = $(".linkchapter").val();
     btnChapterPressed(link);
@@ -73,6 +82,8 @@ bthCommentPressed = (link) => {
       }, 1);
     });
   });
+  localStorage["commentLink"] = link;
+  $(".linkcomment").val(localStorage["commentLink"]);
 };
 
 checkChildren = (data, storage) => {
@@ -98,6 +109,8 @@ btnChapterPressed = (link) => {
       setChapterBtnLink(".nextbtn", novelLink);
     });
   });
+  localStorage["chapterLink"] = link;
+  $(".linkchapter").val(localStorage["chapterLink"]);
 };
 
 getNovel = (url) => {
@@ -133,3 +146,5 @@ setCommentBtnLink = (id) => {
     }
   }, 100);
 };
+
+const res = new Response("Hello world");
