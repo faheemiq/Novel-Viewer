@@ -3,6 +3,10 @@
 <head>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&amp;display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="function.js"></script>
 </head>
 
 <body>
@@ -24,191 +28,12 @@
             <div class="prevcommentbtn"></div>
             <div class="nextcommentbtn"></div>
         </div>
+        <div class="commentChapNumber"></div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script>
-        newComment = (imageLink, commentText) => {
-            if (imageLink === "/images/profile.png") {
-                var imageLink = "images/profile.png"
-            }
-            var newCommentDiv = document.createElement("div");
-            newCommentDiv.className = "newComment";
-            var commentImage = document.createElement("img");
-            commentImage.className = "commentImage";
-            commentImage.setAttribute("src", imageLink);
-            var commentData = document.createElement("p");
-            commentData.className = "commentData";
-            commentData.innerHTML = commentText;
-            var commentChilds = document.createElement("div");
-            commentChilds.className = "commentChilds";
-            newCommentDiv.append(commentImage);
-            newCommentDiv.append(commentData);
-            newCommentDiv.append(commentChilds);
-            return newCommentDiv;
-        }
-        $(document).ready(function () {
-
-            $(".linkchapterbtn").click(() => {
-                var link = $(".linkchapter").val();
-                btnChapterPressed(link);
-            });
-            $(".linkcommentbtn").click(() => {
-                var link = $(".linkcomment").val();
-                bthCommentPressed(link);
-            });
-        });
-
-        bthCommentPressed = (link) => {
-            var tempData = document.createElement("div");
-            $(tempData).load(link + " A", null, function (data, status, jqXGR) {
-
-                tempData.innerHTML = data;
-                var execCommentID = tempData.querySelector("div > script:nth-last-child(2)").innerHTML;
-                setTimeout(execCommentID, 0);
-                setTimeout(() => {
-                    var newLink = `https://www.wuxiaworld.com/api/comments/${COMMENTS_SETTINGS.id}/top`
-                    fetch(newLink).then(response => {
-                        response.json().then(commentData => {
-                            commentData.items.forEach(element => {
-                                $(".commentarea").append(newComment(element.avatar, element.content));
-                            });
-                        }
-                        )
-                    })
-                    console.log(COMMENTS_SETTINGS.id);
-                }, 1)
-            });
-        }
-
-        btnChapterPressed = (link) => {
-            $('.chaptercontent').load(link + ' #chaptercontent');
-            var novelLink = getNovel(link);
-            $('.prevbtn').load(link + ' #pt_prev', setBtnLink(".prevbtn", novelLink));
-            $('.nextbtn').load(link + ' #pt_next', setBtnLink(".nextbtn", novelLink));
-        }
-
-        getNovel = (url) => {
-            const novelLink = "https://" + url.replace(/^https?:\/\//, '').split('/')[0] + "/" + url.replace(/^https?:\/\//, '').split('/')[1] + "/";
-            return novelLink;
-        }
-
-        setBtnLink = (id, novelLink) => {
-            var isLoaded = setInterval(() => {
-                if ($(".prevbtn *").length != 0) {
-                    var btnlink = $(`${id} > a`).attr("href");
-                    $(`${id} > a`).attr("href", "#chapcontent");
-                    var newBtnLink = novelLink + btnlink;
-                    $(`${id} > a`).click(() => btnChapterPressed(newBtnLink));
-                    clearInterval(isLoaded);
-                }
-            }, 100)
-        }
-
-    </script>
-    <style>
-        .commentarea {
-            margin-top: 50px;
-            background-color: #1d1c1c;
-            color: #ccc !important;
-            padding: 60px 40px 60px;
-            font-size: 19.2px;
-            font-weight: 400;
-            line-height: 1.42857;
-        }
-
-        .newComment {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        img.commentImage {
-            width: 65px;
-            height: auto;
-            margin-right: 30px;
-            border-radius: 5px
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .navbtns {
-            display: flex;
-            text-align: center;
-        }
-
-        .navbtns>div {
-            flex: 1
-        }
-
-        .linkbar a {
-            margin-left: 20px;
-            padding: 4px 40px;
-            background-color: #1d1c1c;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 21px;
-        }
-
-        body {
-            background: #464851;
-            font-family: "Open Sans";
-        }
-
-        .content {
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-bottom: 80px;
-        }
-
-        .linkbar {
-            text-align: center;
-            padding: 20px;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 25px;
-        }
-
-        .linkbar input[type="text"] {
-            margin-left: 30px;
-            border-radius: 20px;
-            height: 40px;
-            width: 660px;
-            padding: 0 10px;
-            font-size: 16px;
-        }
-
-        .navbtns a {
-            padding: 10px 20px;
-            color: #fff;
-            background: #1d1c1c;
-            border-radius: 5px;
-            text-decoration: none;
-            width: 100%;
-            display: block;
-            border: 1px solid #fff;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .chaptercontent {
-
-            background: #1d1c1c;
-            color: #ccc !important;
-            padding: 0px 40px 60px;
-            font-size: 19.2px;
-            font-weight: 400;
-            line-height: 1.42857;
-        }
-    </style>
+    <div class="floatingBtns">
+        <a class="prevFloat" href="#chapcontent">Previous</a>
+        <a class="nextFloat" href="#chapcontent">Next</a>
+    </div>
 </body>
 
 </html>
