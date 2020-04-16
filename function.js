@@ -26,7 +26,7 @@ $(document).ready(function () {
   });
 });
 
-newComment = (imageLink, commentText) => {
+newComment = (imageLink, commentText, poster) => {
   if (imageLink === "/images/profile.png") {
     var imageLink = "images/profile.png";
   }
@@ -35,14 +35,18 @@ newComment = (imageLink, commentText) => {
   var commentImage = document.createElement("img");
   var commentPara = document.createElement("p");
   var commentChilds = document.createElement("div");
+  var commentPoster = document.createElement("h4");
   newCommentDiv.className = "newComment";
   commentData.className = "commentData";
   commentImage.className = "commentImage";
   commentPara.className = "commentPara";
   commentChilds.className = "commentChilds";
+  commentPoster.className = "commentPoster";
   commentImage.setAttribute("src", imageLink);
   commentPara.innerHTML = commentText;
+  commentPoster.innerHTML = poster;
   commentData.append(commentImage);
+  commentData.append(commentPoster);
   commentData.append(commentPara);
   newCommentDiv.append(commentData);
   newCommentDiv.append(commentChilds);
@@ -55,6 +59,7 @@ bthCommentPressed = (link) => {
   fetch(link).then((response) => {
     response.text().then((html) => {
       tempData.innerHTML = html;
+      console.log(html);
       $(".commentChapNumber").html(
         tempData.querySelector(".section .panel.panel-default .caption h4")
       );
@@ -88,7 +93,7 @@ bthCommentPressed = (link) => {
 
 checkChildren = (data, storage) => {
   data.forEach((element) => {
-    var newCommt = newComment(element.avatar, element.content);
+    var newCommt = newComment(element.avatar, element.content, element.poster);
     if (element.children.length > 0) {
       checkChildren(element.children, newCommt.querySelector(".commentChilds"));
     }
