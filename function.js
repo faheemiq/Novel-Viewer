@@ -59,7 +59,7 @@ bthCommentPressed = (link) => {
   fetch(link).then((response) => {
     response.text().then((html) => {
       tempData.innerHTML = html;
-      console.log(html);
+      console.log(tempData);
       $(".commentChapNumber").html(
         tempData.querySelector(".section .panel.panel-default .caption h4")
       );
