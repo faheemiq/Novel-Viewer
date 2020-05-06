@@ -1,144 +1,18 @@
-.commentarea {
-  margin-top: 50px;
-  background-color: #1d1c1c;
-  padding: 60px 40px 60px;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 1.42857;
-}
-
-.newComment {
-  align-items: center;
-  margin-bottom: 0px;
-}
-
-img.commentImage {
-  width: 65px;
-  height: auto;
-  margin-right: 30px;
-  border-radius: 5px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.navbtns {
-  display: flex;
-  text-align: center;
-}
-
-.navbtns > div {
-  flex: 1;
-}
-
-.linkbar a {
-  margin-left: 20px;
-  padding: 4px 40px;
-  background-color: #1d1c1c;
-  border-radius: 5px;
-  text-decoration: none;
-  color: inherit;
-  font-size: 21px;
-}
-
-body {
-  background: #464851;
-  font-family: "Open Sans";
-  margin: 0;
-  color: #ccc;
-}
-
-.content {
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 80px;
-}
-
-.linkbar {
-  text-align: center;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-}
-
-.linkbar input[type="text"] {
-  margin-left: 30px;
-  border-radius: 20px;
+.inputbox input {
   height: 40px;
-  width: 660px;
-  padding: 0 10px;
-  font-size: 16px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  margin: 10px;
+  width: 400px;
 }
 
-.navbtns a {
-  padding: 10px 20px;
-  color: inherit;
-  background: #1d1c1c;
+.inputbox a {
+  text-decoration: none;
+  color: #ffffff !important;
+  background: #5b5b5b;
+  padding: 8px 16px;
   border-radius: 5px;
-  text-decoration: none;
-  width: 100%;
-  display: block;
-  border: 1px solid #ccc;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-.chaptercontent {
-  background: #1d1c1c;
-  padding: 0px 40px 60px;
-  font-size: 23px;
-  font-weight: 400;
-  line-height: 1.6;
-  margin-top: 30px;
-}
-
-.commentChapNumber h4 {
-  text-align: center;
-}
-
-.floatingBtns {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  border: 1px solid #ccc;
-}
-
-.floatingBtns > a {
-  color: inherit;
-  flex: 1;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  background: #1d1c1c;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.commentData {
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-}
-
-.commentChilds {
-  padding-left: 70px;
-  padding-top: 20px;
-}
-
-a {
-  color: #fff;
-}
-h4.commentPoster {
-  position: absolute;
-  top: -38px;
-  left: 95px;
-  font-weight: 600;
-  color: #5a5a5a;
+div#chaptercontent div {
+  display: none;
 }
