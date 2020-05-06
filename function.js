@@ -3,6 +3,7 @@ jQuery(document).ready(() => {
   jQuery("#content-container").before(
     "<div class='inputbox'><input placeholder='chaplink' /><a href='#'>Get Chapter</a></div>"
   );
+
   jQuery(".inputbox a").on("click", () => {
     var tempData = document.createElement("div");
     var link = jQuery(".inputbox input")[0].value;
