@@ -1,4 +1,77 @@
+<<<<<<< HEAD
 .inputbox input {
+=======
+.commentarea {
+  margin-top: 50px;
+  background-color: #1d1c1c;
+  padding: 60px 40px 60px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.42857;
+}
+
+.newComment {
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+img.commentImage {
+  width: 65px;
+  height: auto;
+  margin-right: 30px;
+  border-radius: 5px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbtns {
+  display: flex;
+  text-align: center;
+}
+
+.navbtns > div {
+  flex: 1;
+}
+
+.linkbar a {
+  margin-left: 20px;
+  padding: 4px 40px;
+  background-color: #1d1c1c;
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 21px;
+}
+
+body {
+  background: #464851;
+  font-family: "Open Sans";
+  margin: 0;
+  color: #ccc;
+}
+
+.content {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 80px;
+}
+
+.linkbar {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.linkbar input[type="text"] {
+  margin-left: 30px;
+  border-radius: 20px;
+>>>>>>> 4012b6338dcc568f1a92eba96afaa93ac6b67f2b
   height: 40px;
   padding: 5px 8px;
   border-radius: 6px;
