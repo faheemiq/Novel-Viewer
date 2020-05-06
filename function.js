@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  if (localStorage["chapterLink"].length != 0) {
+  if (localStorage["chapterLink"] != null) {
     btnChapterPressed(localStorage["chapterLink"]);
   }
-  if (localStorage["commentLink"].length != 0) {
+  if (localStorage["commentLink"] != null) {
     bthCommentPressed(localStorage["commentLink"]);
   }
   $(".linkchapter").val(localStorage["chapterLink"]);
