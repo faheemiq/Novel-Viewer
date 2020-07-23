@@ -1,7 +1,7 @@
 jQuery(document).ready(() => {
   var next_link, prev_link;
-  jQuery("#content-container").before(
-    "<div class='inputbox'><input placeholder='chaplink' /><a href='#'>Get Chapter</a></div>"
+  jQuery("div#content-container .section-content").before(
+    "<div class='inputbox'><input placeholder='Chapter Link.....' /><a href='#'>Get Chapter</a></div>"
   );
 
   jQuery(".inputbox a").on("click", () => {
