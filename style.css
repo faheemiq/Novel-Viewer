@@ -1,9 +1,13 @@
+body.darkmode :not(.modal-body)>ol li, body.darkmode :not(.modal-body)>p, 
+body.darkmode :not(.modal-body)>span, body.darkmode :not(.modal-body)>ul li {
+    color: #bdbdbd!important;
+}
 .inputbox input {
   height: 40px;
   padding: 5px 8px;
   border-radius: 6px;
-  flex:1;
-  border: 1px solid #000;
+  margin: 10px;
+  width: 400px;
 }
 
 .inputbox a {
@@ -13,10 +17,6 @@
   padding: 8px 16px;
   border-radius: 5px;
 }
-
-.inputbox {
-    display: flex;
-    background-color: #5b5b5b;
-    padding: 10px;
-    border-bottom: 1px solid;
+div#chaptercontent div {
+  display: none;
 }
